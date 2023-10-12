@@ -1,11 +1,18 @@
 ﻿using System;
+using Blog.NETMVC.Models.Domain;
+using Microsoft.EntityFrameworkCore;
+
 namespace Blog.NETMVC.Data
 {
-	public class BlogDbContext
+	public class BlogDbContext : DbContext
 	{
-		public BlogDbContext()
+		public BlogDbContext(DbContextOptions options) : base(options)
 		{
 		}
+
+		public DbSet<BlogPost> BlogPosts { get; set; }
+
+		public DbSet<Tag> Tags { get; set; }
 	}
 }
 

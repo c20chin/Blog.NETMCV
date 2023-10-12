@@ -9,7 +9,7 @@ namespace Blog.NETMVC.Models.Domain
 
 		public string DisplayName { get; set; }
 
-
+		public ICollection<BlogPost> BlogPosts { get; set; }
 
 	}
 }

@@ -9,3 +9,4 @@ namespace Blog.NETMVC.Models.Domain
 	}
 }
 
+//add note
