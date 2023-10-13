@@ -27,5 +27,6 @@
     </PackageReference>
     <PackageReference Include="NuGet.exe" Version="3.4.3" />
     <PackageReference Include="NuGet.PackageManagement" Version="6.7.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
   </ItemGroup>
 </Project>
