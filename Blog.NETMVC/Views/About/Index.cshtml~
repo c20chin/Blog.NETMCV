@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "About Page";
+}
+
+<div class="text-center">
+    <div class="container p-5">
+        <h1 class="display-4 mt-10">About .ju</h1>
+        <h2 class="display-3 mt-5">Hi, I'm ju. A software developer specialized in web application. 23 years old. Part-time Medium writer.'</h2>
+        <br />
+        <h4>More About Me:</h4>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/judy-giaying-chin/">https://www.linkedin.com/in/judy-giaying-chin/</a></p>
+        <p>GitHub: <a href="https://github.com/c20chin">https://github.com/c20chin</a></p>
+        <p>Portfolio: <a href="https://c20chin.github.io/">https://c20chin.github.io/</a></p>
+        <p>Medium: <a href="https://medium.com/@.ju">https://medium.com/@.ju</a></p>
+    </div>
+
+</div>
