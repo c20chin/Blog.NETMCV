@@ -8,9 +8,13 @@ namespace Blog.NETMVC.Controllers
 {
     public class BlogsController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Add()
         {
             return View();
         }
+
+
+
     }
 }

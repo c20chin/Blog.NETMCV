@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">.NET Practice Hub .ju</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">.NET Practice Hub</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,11 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#">View & Edit</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Blogs"
+                                       asp-action="Add">Add Blog Post</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item">

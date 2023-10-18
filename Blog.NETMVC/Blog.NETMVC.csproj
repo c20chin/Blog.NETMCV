@@ -17,6 +17,7 @@
     <None Remove="Views\AdminTags\" />
     <None Remove="Models\ViewModels\" />
     <None Remove="Views\About\" />
+    <None Remove="Views\Blogs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Domain\" />
@@ -25,6 +26,7 @@
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\About\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\Blogs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
