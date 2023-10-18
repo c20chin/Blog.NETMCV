@@ -33,12 +33,20 @@
                                        asp-controller="AdminTags"
                                        asp-action="Add">Add Tag</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">View & Edit</a></li>
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="AdminTags"
+                                       asp-action="List">All Tags</a>
+                                </li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item"
+                                <li>
+                                    <a class="dropdown-item"
                                        asp-area=""
                                        asp-controller="Blogs"
-                                       asp-action="Add">Add Blog Post</a></li>
+                                       asp-action="Add">Add Blog Post</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">All Blogs</a></li>
 
                             </ul>
                         </li>
