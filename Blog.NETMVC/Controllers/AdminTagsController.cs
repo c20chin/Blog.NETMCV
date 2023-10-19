@@ -5,29 +5,32 @@ using System.Threading.Tasks;
 using Blog.NETMVC.Data;
 using Blog.NETMVC.Models.Domain;
 using Blog.NETMVC.Models.ViewModels;
+using Blog.NETMVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.NETMVC.Controllers
 {
     public class AdminTagsController : Controller
     {
-        private readonly BlogDbContext blogDbContext;
+        private readonly ITagRepository tagRepository;
 
-        public AdminTagsController(BlogDbContext blogDbContext)
+        public AdminTagsController(ITagRepository tagRepository)
         {
-            this.blogDbContext = blogDbContext;
+            this.tagRepository = tagRepository;
         }
 
+        //get all tags
         [HttpGet]
         public IActionResult Add()  // http://localhost:xxxx/AdminTags/Add: To view the Add page
         {
             return View();
         }
 
-        
+        //Add tags
         [HttpPost]
         [ActionName("Add")]
-        public IActionResult SubmitTag(AddTagRequest addTagRequest)
+        public async Task<IActionResult> SubmitTag(AddTagRequest addTagRequest)
         {
             //Mapping AddTagRequest to Tag domain model
             var tag = new Tag
@@ -36,34 +39,30 @@ namespace Blog.NETMVC.Controllers
                 DisplayName = addTagRequest.DisplayName
             };
 
-
-
-            blogDbContext.Tags.Add(tag);
-            blogDbContext.SaveChanges();
-            
+            await tagRepository.AddAsync(tag);
 
             return RedirectToAction("List");
         }
 
 
+        //List out all tags
         [HttpGet]
         [ActionName("List")]
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
             // Use DBContext to read the tags
-            var tags = blogDbContext.Tags.ToList();
+            var tags = await tagRepository.GetAllAsync();
 
             return View(tags);
         }
 
-        [HttpGet]
-        public IActionResult Edit(Guid id)
-        {
-            // first method
-            //var tag = blogDbContext.Tags.Find(id);
 
-            // second method
-            var tag = blogDbContext.Tags.FirstOrDefault(x => x.Id == id);
+        //get one tag detail
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+
+            var tag = await tagRepository.GetAsync(id);
 
             if (tag != null)
             {
@@ -82,8 +81,9 @@ namespace Blog.NETMVC.Controllers
             return View(null);
         }
 
+        //update tag
         [HttpPost]
-        public IActionResult Edit(EditTagRequest editTagRequest)
+        public async Task<IActionResult> Edit(EditTagRequest editTagRequest)
         {
             var tag = new Tag
             {
@@ -92,33 +92,30 @@ namespace Blog.NETMVC.Controllers
                 DisplayName = editTagRequest.DisplayName
             };
 
-            var existingTag = blogDbContext.Tags.Find(tag.Id);
+            var updatedTag = await tagRepository.UpdateAsync(tag);
 
-            if (existingTag != null)
+            if (updatedTag != null)
             {
-                existingTag.Name = tag.Name;
-                existingTag.DisplayName = tag.DisplayName;
-
-                blogDbContext.SaveChanges();
+                //Show success
                 return RedirectToAction("List");
-
+            }
+            else
+            {
+                //Show fail
             }
 
             return RedirectToAction("Edit", new { id = editTagRequest.Id });
         }
 
-
+        //delete tag
         [HttpPost]
-        public IActionResult Delete(EditTagRequest editTagRequest)
+        public async Task<IActionResult> Delete(EditTagRequest editTagRequest)
         {
-            var tag = blogDbContext.Tags.Find(editTagRequest.Id);
+            var deletedTag = await tagRepository.DeleteAsync(editTagRequest.Id);
 
-            if (tag != null)
+            if (deletedTag != null)
             {
-                blogDbContext.Tags.Remove(tag);
-                blogDbContext.SaveChanges();
-
-                // Show success notification
+                //show success
                 return RedirectToAction("List");
             }
 

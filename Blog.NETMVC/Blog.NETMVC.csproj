@@ -18,6 +18,7 @@
     <None Remove="Models\ViewModels\" />
     <None Remove="Views\About\" />
     <None Remove="Views\Blogs\" />
+    <None Remove="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Domain\" />
@@ -27,6 +28,7 @@
     <Folder Include="Views\About\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Views\Blogs\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
