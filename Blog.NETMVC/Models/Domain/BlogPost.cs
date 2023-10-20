@@ -23,6 +23,7 @@ namespace Blog.NETMVC.Models.Domain
 
         public bool Visible { get; set; }
 
+        //Navigation property
         public ICollection<Tag> Tags { get; set; }
     }
 }

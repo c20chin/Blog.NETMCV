@@ -45,10 +45,12 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Blogs"
+                                       asp-controller="AdminBlogPosts"
                                        asp-action="Add">Add Blog Post</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">All Blogs</a></li>
+                                <li><a class="dropdown-item" asp-area=""
+                                       asp-controller="AdminBlogPosts"
+                                       asp-action="List">All Blogs</a></li>
 
                             </ul>
                         </li>

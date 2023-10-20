@@ -98,7 +98,7 @@ namespace Blog.NETMVC.Controllers
             {
                 //Show success
                 return RedirectToAction("List");
-            }
+            } 
             else
             {
                 //Show fail

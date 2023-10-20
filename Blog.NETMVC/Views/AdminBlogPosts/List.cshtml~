@@ -1,0 +1,48 @@
+﻿@model Blog.NETMVC.Models.Domain.BlogPost
+
+@{
+
+}
+
+
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add New Blog Post - Admin Functionality</h1>
+    </div>
+</div>
+
+
+<div class="container py-5">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Heading</th>
+                    <th>Published Date</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var blogPost in Model)
+                {
+                    <tr>
+                        <td>@blogPost.Id</td>
+                        <td>@blogPost.Heading</td>
+                        <td>@blogPost.PublisedDate</td>
+                        <td>
+                            <a asp-area="" asp-controller="AdminTags" asp-action="Edit"
+                               asp-route-id="@blogPost.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No tags found!</p>
+    }
+</div>
