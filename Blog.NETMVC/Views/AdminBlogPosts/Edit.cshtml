@@ -65,8 +65,19 @@
 
 
 
-            <div class="mb-3">
-                <button type="submit" class="btn btn-dark">Update</button>
+            <div class="d-flex">
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-dark">Update</button>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-danger ms-2"
+                            asp-area=""
+                            asp-controller="AdminBlogPosts"
+                            asp-action="Delete">
+                        Delete
+                    </button>
+                </div>
+
             </div>
         </form>
     }

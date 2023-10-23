@@ -132,7 +132,7 @@ namespace Blog.NETMVC.Controllers
         }
 
 
-
+        // update blogpost
         [HttpPost]
         public async Task<IActionResult> Edit(EditBlogPostRequest editBlogPostRequest)
         {
@@ -171,8 +171,33 @@ namespace Blog.NETMVC.Controllers
 
             blogPostDomainModel.Tags = selectedTags;
             // submit info to repo to update
+            var updatedBlog = await blogPostRepository.UpdateAsync(blogPostDomainModel);
+
+            if (updatedBlog != null)
+            {
+                //success
+                return RedirectToAction("List");
+            }
 
             //redirect to GET
+            return RedirectToAction("Edit");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(EditBlogPostRequest editBlogPostRequest)
+        {
+            var deletedBlogPost = await blogPostRepository.DeleteAsync(editBlogPostRequest.Id);
+
+            if (deletedBlogPost != null)
+            {
+                //show success
+                return RedirectToAction("List");
+            }
+
+            // Show error message
+            return RedirectToAction("Edit", new { id = editBlogPostRequest.Id });
+
+        }
+
     }
 }
