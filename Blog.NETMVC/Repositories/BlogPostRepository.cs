@@ -41,7 +41,7 @@ namespace Blog.NETMVC.Repositories
 
         public Task<BlogPost?> UpdateAsync(BlogPost blogPost)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
