@@ -75,7 +75,7 @@ namespace Blog.NETMVC.Controllers
 
 
             await blogPostRepository.AddAsync(blogPost);
-            return RedirectToAction("Add");
+            return RedirectToAction("List");
         }
 
         // Get all posts to view

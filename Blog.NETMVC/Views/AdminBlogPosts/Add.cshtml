@@ -27,14 +27,14 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Featured Image Upload</label>
-            <input type="file" id="featuredImageUpload" class="form-control" name="FeaturedImageUrl" asp-for="FeaturedImageUrl" />
+            <input type="file" id="featuredImageUpload" class="form-control" />
+            <img src="" id="featuredImageDisplay" style="display:none;width: 300px" />
         </div>
 
         <div class="mb-3">
             <label class="form-label">Featured Image Url</label>
-            <input type="text" class="form-control" id="featuredImageUrl" name="FeaturedImageUrl" asp-for="FeaturedImageUrl" readonly/>
+            <input type="text" class="form-control" id="featuredImageUrl" name="FeaturedImageUrl" asp-for="FeaturedImageUrl" />
 
-            <img src="" id="featuredImageDisplay" style="display:none;width: 300px"/>
         </div>
         <div class="mb-3">
             <label class="form-label">Url Handle</label>
@@ -75,7 +75,9 @@
 
 @section Scripts {
     <script>
-        var editor = new FroalaEditor('#content')
+        var editor = new FroalaEditor('#content', {
+            imageUploadURL: '/api/images'
+        })
 
 
         const featuredUploadElement = document.getElementById('featuredImageUpload');
@@ -99,9 +101,8 @@
                     featuredImageUrlElement.value = result.link;
                     featuredImageDisplayElement.src = result.link;
                     featuredImageDisplayElement.style.display = 'block';
-                    console.log(featuredImageUrlElement.value);
-                })
-        }
+                });
+        };
 
         featuredUploadElement.addEventListener('change', uploadFeaturedImage);
 

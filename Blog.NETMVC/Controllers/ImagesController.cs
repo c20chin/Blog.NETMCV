@@ -12,7 +12,7 @@ namespace Blog.NETMVC.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ImagesController : Controller
+    public class ImagesController : ControllerBase
     {
         private readonly IImageRepository imageRepository;
 
@@ -21,7 +21,7 @@ namespace Blog.NETMVC.Controllers
             this.imageRepository = imageRepository;
         }
 
-        // POST api/values
+        
         [HttpPost]
         public async Task<IActionResult> UploadAsync(IFormFile file)
         {
@@ -36,17 +36,7 @@ namespace Blog.NETMVC.Controllers
             return new JsonResult(new { link = imageURL });
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }
 

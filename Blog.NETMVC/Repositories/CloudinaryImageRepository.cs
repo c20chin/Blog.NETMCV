@@ -8,7 +8,6 @@ namespace Blog.NETMVC.Repositories
     {
         private readonly IConfiguration configuration;
         private readonly Account account;
-        private object cloudinary;
 
         public CloudinaryImageRepository(IConfiguration configuration)
         {
