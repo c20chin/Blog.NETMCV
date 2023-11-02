@@ -1,0 +1,38 @@
+﻿@model List<MissionViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Missions</title>
+</head>
+<body>
+    <h1>Missions</h1>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Mission Name</th>
+                    <th>Launch Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var mission in Model)
+                {
+                    <tr>
+                        <td>@mission.Name</td>
+                        <td>@mission.LaunchDate.ToShortDateString()</td>
+                        <td>@mission.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No missions found.</p>
+    }
+</body>
+</html>

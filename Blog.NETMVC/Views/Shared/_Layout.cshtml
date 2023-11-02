@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">首頁</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="SpaceX" asp-action="Mission">SpaceX</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 CRUD Functions
@@ -53,9 +56,11 @@
                                        asp-controller="AdminBlogPosts"
                                        asp-action="Add">Add Blog Post</a>
                                 </li>
-                                <li><a class="dropdown-item" asp-area=""
+                                <li>
+                                    <a class="dropdown-item" asp-area=""
                                        asp-controller="AdminBlogPosts"
-                                       asp-action="List">All Blogs</a></li>
+                                       asp-action="List">All Blogs</a>
+                                </li>
 
                             </ul>
                         </li>
@@ -94,7 +99,7 @@
                                        asp-controller="Blogs"
                                        asp-action="Add">學校事務</a>
                                 </li>
-                               
+
 
                             </ul>
                         </li>
