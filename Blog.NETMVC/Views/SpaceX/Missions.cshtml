@@ -1,4 +1,4 @@
-﻿@model List<Blog.NETMVC.Models.Domain.Mission>
+﻿@model IEnumerable<Blog.NETMVC.Models.Domain.Mission>
 
 <!DOCTYPE html>
 <html>
@@ -8,13 +8,14 @@
 <body>
     <h1>Missions</h1>
 
-    @if (Model != null && Model.Count > 0)
-    {
+    @if (Model != null)
+     {
         <table>
             <thead>
                 <tr>
+                    <th>Mission ID</th>
                     <th>Mission Name</th>
-                    <th>Launch Date</th>
+                    <th>Website</th>
                     <th>Description</th>
                 </tr>
             </thead>
@@ -22,9 +23,10 @@
                 @foreach (var mission in Model)
                 {
                     <tr>
-                        <td>@mission.MissionName</td>
-                        <td>@mission.LaunchDate.ToShortDateString()</td>
-                        <td>@mission.Description</td>
+                        <td>@mission.mission_id</td>
+                        <td>@mission.mission_name</td>
+                        <td>@mission.website</td>
+                        <td>@mission.description</td>
                     </tr>
                 }
             </tbody>

@@ -5,11 +5,13 @@ namespace Blog.NETMVC.Models.Domain
     {
         public Guid Id { get; set; }
 
-        public string MissionName { get; set; }
+        public string mission_id { get; set; }
 
-        public DateTime LaunchDate { get; set; }
+        public string mission_name { get; set; }
 
-        public string Description { get; set; }
+        public string website { get; set; }
+
+        public string description { get; set; }
 
     }
 }

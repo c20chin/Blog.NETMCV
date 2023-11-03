@@ -1,12 +1,12 @@
 ﻿public class MissionViewModel
 {
-    public string MissionName { get; set; }
-    public DateTime LaunchDate { get; set; }
-    public string Description { get; set; }
-    // Add additional properties as needed
+    public string mission_id { get; set; }
 
-    public MissionViewModel()
-    {
-        // You can set default values or perform any necessary initialization here.
-    }
+    public string mission_name { get; set; }
+
+    public string website { get; set; }
+
+    public string description { get; set; }
+
+    
 }

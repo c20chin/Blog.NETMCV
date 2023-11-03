@@ -1,28 +1,46 @@
 ﻿using Blog.NETMVC.Models;
-using System.Diagnostics;
+using Blog.NETMVC.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
-
-[Route("api/spaceX")]
-[ApiController]
-public class SpaceXController : Controller
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+namespace Blog.NETMVC.Controllers
 {
-
-    [HttpGet]
-    public async Task<IActionResult> Add()  // http://localhost:xxxx/AdminTags/Add: To view the Add page
+    public class SpaceXController : Controller
     {
-        var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Get, "https://api.spacexdata.com/v3/missions");
-        var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
-        Console.WriteLine(await response.Content.ReadAsStringAsync());
+        string Baseurl = "https://api.spacexdata.com/v3/";
 
-        var jsonContent = await response.Content.ReadAsStringAsync();
 
-        return Ok(jsonContent);
+        [Route("spaceX/{offset?}/{limit?}")]
+        [HttpGet]
+        public async Task<IActionResult> Index(int? offset = null, int? limit = null)
+        {
+            // Retrieve the values from the query parameters
+            ViewBag.Limit = limit;
+            ViewBag.Offset = offset;
+
+            List<Mission> Missions = new List<Mission>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Baseurl);
+                client.DefaultRequestHeaders.Clear();
+                HttpResponseMessage Res = await client.GetAsync($"missions?offset={offset}&limit={limit}");
+                if (Res.IsSuccessStatusCode)
+                {
+                    var response = Res.Content.ReadAsStringAsync().Result;
+                    Missions = JsonConvert.DeserializeObject<List<Mission>>(response);
+
+                    return View(Missions);
+                }
+                else
+                {
+                    return NotFound();
+                }
+                
+            }
+        }
+
+
+        
     }
-
-    
-
-
-
 }
+        
